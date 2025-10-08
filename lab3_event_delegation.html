@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 3: Event Delegation in JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    #buttonContainer {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: lightblue;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: lightgreen;
+    }
+
+    #addBtn {
+      margin-top: 30px;
+      background-color: coral;
+    }
+  </style>
+</head>
+<body>
+  <h2>Lab 3: Event Delegation in JavaScript</h2>
+
+  <!-- Task 1: Container with 4 buttons -->
+  <div id="buttonContainer">
+    <button>Button 1</button>
+    <button>Button 2</button>
+    <button>Button 3</button>
+    <button>Button 4</button>
+  </div>
+
+  <!-- Task 4: Add new button dynamically -->
+  <button id="addBtn">Add New Button</button>
+
+  <script>
+    const container = document.getElementById("buttonContainer");
+    const addBtn = document.getElementById("addBtn");
+
+    // Task 2 & 3: Attach ONE click listener to the parent div
+    container.addEventListener("click", function(event) {
+      // Check if the clicked element is a button
+      if (event.target.tagName === "BUTTON") {
+        alert(`You clicked: ${event.target.textContent}`);
+      }
+    });
+
+    // Task 4: Add a new button dynamically
+    let count = 4;
+    addBtn.addEventListener("click", function() {
+      count++;
+      const newButton = document.createElement("button");
+      newButton.textContent = `Button ${count}`;
+      container.appendChild(newButton);
+    });
+  </script>
+</body>
+</html>
